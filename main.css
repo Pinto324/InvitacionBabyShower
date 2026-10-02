@@ -1,0 +1,397 @@
+/* Restablecimiento general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #3b0000;
+    overflow-x: hidden;
+}
+
+/* --- SECCIÓN DE INICIO --- */
+.seccion-inicio {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+    background-color: transparent; /* <- ¡Este es el cambio clave! */
+}
+
+/* Textura de cortina usando gradientes múltiples para simular pliegues de tela */
+.puerta {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    /* Gradiente que simula sombras y luces en terciopelo/tela */
+    background: linear-gradient(to right, #ff9fb6 0%, #ffd0db 20%, #ff9fb6 40%, #ffd0db 60%, #ff9fb6 80%, #ffd0db 100%);
+    transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1); /* Transición más suave y realista */
+    z-index: 1;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.8); /* Sombra interna para dar profundidad */
+}
+
+.puerta-izq {
+    left: 0;
+    border-right: 3px solid #d4af37; /* Borde dorado tipo ribete */
+    transform-origin: left;
+}
+
+.puerta-der {
+    right: 0;
+    border-left: 3px solid #d4af37;
+    background: linear-gradient(to left, #ff9fb6 0%, #ffd0db 20%, #ff9fb6 40%, #ffd0db 60%, #ff9fb6 80%, #ffd0db 100%);
+    transform-origin: right;
+}
+
+/* ... [Tu CSS anterior de las puertas se queda igual] ... */
+
+/* Contenedor de los textos iniciales (Ahora es una tarjeta blanca) */
+.contenido-inicio {
+    /* Mantenemos lo que ya tenías */
+    text-align: center;
+    z-index: 2;
+    transition: opacity 0.8s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 5px solid #edaebd;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    pointer-events: auto;
+    
+    /* NUEVO: Lo hacemos responsive */
+    width: 90%; /* Toma el 90% del ancho en móviles */
+    max-width: 450px; /* Pero no crece más de 450px en PC */
+    padding: 30px 20px; /* Reducimos un poco el padding lateral base */
+    border-radius: 20px;
+}
+
+/* Tipografía elegante para invitación (Colores ajustados a la temática) */
+.contenido-inicio h1 {
+    font-family: 'Playfair Display', serif;
+    color: #b17181; /* Rosa fuerte/oscuro */
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.contenido-inicio h2 {
+    font-family: 'Great Vibes', cursive;
+    color: #e49eb3; /* Rosa principal de la invitación */
+    font-size: 4.5rem;
+    font-weight: normal;
+    margin: 10px 0 30px 0;
+}
+
+/* Botón estilizado */
+#btn-abrir {
+    padding: 12px 35px;
+    background: transparent;
+    color: #b17181;
+    border: 2px solid #edaebd;
+    border-radius: 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+#btn-abrir:hover {
+    background: #edaebd;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(237, 174, 189, 0.6);
+}
+
+/* --- CLASES DE ANIMACIÓN --- */
+.seccion-inicio.abierta .puerta-izq {
+    transform: translateX(-100%);
+}
+
+.seccion-inicio.abierta .puerta-der {
+    transform: translateX(100%);
+}
+
+.seccion-inicio.abierta .contenido-inicio {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- CLASE DE BLUR PARA EL CONTENIDO DE FONDO --- */
+.efecto-blur {
+    filter: blur(2px); /* Cantidad de desenfoque inicial */
+    transition: filter 1s ease; /* Transición suave al quitar el blur */
+}
+
+/* ... [El resto de tu CSS (.seccion-invitacion, .seccion-detalles, etc.) se queda exactamente igual] ... */
+
+/* --- SECCIÓN DE INVITACIÓN --- */
+.seccion-invitacion {
+    min-height: 100vh;
+    background-color: #2a0000;
+    color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
+/* --- SECCIÓN 1: ENCABEZADO (Estilo Video) --- */
+.seccion-encabezado {
+    min-height: 100vh;
+    background-color: #fdf5f7;
+    background: linear-gradient(to left, #b17181 0%, #f4dfe4 50%,  #b17181 100%); /* Rosa muy pálido de fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    
+}
+
+.contenido-encabezado {
+    max-width: 800px;
+}
+
+.subtitulo, .nombres {
+    font-family: 'Lato', sans-serif;
+    color: #a0a0a0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.titulo-principal {
+    font-family: 'Great Vibes', cursive;
+    color: #e49eb3; /* Rosa de la imagen */
+    font-size: 5rem;
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+.fecha-destacada {
+    margin-top: 30px;
+    font-family: 'Playfair Display', serif;
+    color: #777;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    border-top: 1px solid #e49eb3;
+    border-bottom: 1px solid #e49eb3;
+    padding: 10px 0;
+    display: inline-block;
+}
+
+/* --- SECCIÓN 2: DETALLES (Basado en la imagen) --- */
+.seccion-detalles {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    /* Fondo de cuadros Vichy rosas y blancos de la imagen */
+    background-color: #fff;
+    background-image: 
+        linear-gradient(90deg, rgba(228, 158, 179, 0.2) 50%, transparent 50%),
+        linear-gradient(rgba(228, 158, 179, 0.2) 50%, transparent 50%);
+    background-size: 50px 50px;
+}
+
+.tarjeta-fondo-cuadros {
+    width: 95%; /* Le da un pequeño margen respecto a los bordes de la pantalla */
+    max-width: 600px;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* Forma blanca central con borde rosa */
+.tarjeta-blanca {
+    background-color: #ffffff;
+    border: 6px solid #edaebd;
+    border-radius: 40px;
+    padding: 50px 30px 30px 30px; /* Más padding arriba para que el moño no tape el texto */
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    position: relative;
+    width: 100%;
+}
+
+.decoracion-mono {
+    position: absolute;
+    /* Centrado perfecto */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Tamaño dinámico */
+    width: 150px; /* Tamaño base */
+    max-width: 40%; /* Si la pantalla es muy pequeña, no será más grande que el 40% de la tarjeta */
+    height: auto; /* Mantiene la proporción de la imagen */
+    
+    /* Posición ajustada al borde superior */
+    top: -65px; 
+    z-index: 10;
+}
+
+/* Textos de la cabecera de la tarjeta */
+.texto-pequeno-rosa {
+    font-family: 'Lato', sans-serif;
+    color: #edaebd;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.texto-grande-rosa {
+    font-family: 'Playfair Display', serif;
+    color: #e49eb3;
+    font-size: 4.5rem;
+    font-weight: normal;
+    letter-spacing: 5px;
+    line-height: 1;
+    margin: 10px 0;
+}
+
+/* Texto en cursiva flanqueado por líneas negras */
+.texto-cursiva-lineas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.texto-cursiva-lineas::before,
+.texto-cursiva-lineas::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #000;
+    margin: 0 15px;
+}
+
+.texto-cursiva-lineas span {
+    font-family: 'Great Vibes', cursive;
+    color: #000;
+    font-size: 3rem;
+}
+
+.texto-gris-serif {
+    font-family: 'Playfair Display', serif;
+    color: #888;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+/* Distribución del cuerpo de la tarjeta (Imagen + Info) */
+.tarjeta-cuerpo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.contenedor-imagen {
+    flex: 1;
+    min-width: 200px;
+}
+
+.imagen-patito {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+}
+
+.contenedor-info {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    color: #888;
+}
+
+.info-fecha {
+    font-family: 'Playfair Display', serif;
+    color: #a8a090;
+}
+
+.mes-dia, .hora {
+    font-size: 2.8rem;
+    line-height: 1.1;
+}
+
+.linea-separadora {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 20px auto;
+    width: 60%;
+}
+
+.info-lugar {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-bottom: 30px;
+}
+
+.info-rsvp {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Responsive: Ajustes para pantallas pequeñas */
+@media (max-width: 500px) {
+    .tarjeta-cuerpo {
+        flex-direction: column;
+    }
+    .texto-grande-rosa { font-size: 3.5rem; }
+    .texto-cursiva-lineas span { font-size: 2.5rem; }
+    .mes-dia, .hora { font-size: 2.2rem; }
+}
+#fondoencabezado {
+    background: linear-gradient(to bottom, #fbe2e8, #f9e6eb);
+    padding: 60px 20px;
+    border-radius: 0 0 50% 50% / 0 0 20% 20%;
+}
+/* CSS */
+.button-74 {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: #fff;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
