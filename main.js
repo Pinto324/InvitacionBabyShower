@@ -1,24 +1,57 @@
 document.addEventListener('DOMContentLoaded', () => {
     const btnAbrir = document.getElementById('btn-abrir');
     const seccionInicio = document.getElementById('inicio');
-    const seccionDetalles = document.getElementById('detalles'); // Capturamos la sección de la invitación
+    const seccionDetalles = document.getElementById('detalles');
     
-    // Verificamos que los elementos existan para evitar errores
+    // Elementos de música
+    const musicaFondo = document.getElementById('musica-fondo');
+    const btnMusica = document.getElementById('btn-musica');
+    const svgSonido = document.getElementById('svg-sonido');
+    const svgMute = document.getElementById('svg-mute');
+    
+    let reproduciendo = false;
+
     if (btnAbrir && seccionInicio) {
         btnAbrir.addEventListener('click', () => {
-            // Activa la animación CSS de las cortinas
+            // Animación
             seccionInicio.classList.add('abierta');
             
-            // Esperamos 1.5s (lo que dura la apertura de las puertas)
+            // Iniciar música automáticamente al abrir
+            if(musicaFondo) {
+                musicaFondo.play().then(() => {
+                    reproduciendo = true;
+                    btnMusica.style.display = 'flex'; // Muestra el botón flotante
+                }).catch(error => {
+                    console.log("El navegador bloqueó el autoplay", error);
+                    btnMusica.style.display = 'flex';
+                });
+            }
+            
             setTimeout(() => {
-                // Ocultamos la sección inicial
                 seccionInicio.style.display = 'none';
-                
-                // Quitamos el efecto blur de la sección de detalles
                 if (seccionDetalles) {
                     seccionDetalles.classList.remove('efecto-blur');
                 }
             }, 1500); 
+        });
+    }
+
+    // Control del botón flotante Play/Pause
+    if (btnMusica) {
+        btnMusica.addEventListener('click', () => {
+            if (reproduciendo) {
+                musicaFondo.pause();
+                // Ocultar icono de sonido, mostrar mute
+                svgSonido.style.display = 'none';
+                svgMute.style.display = 'block';
+                reproduciendo = false;
+            } else {
+                musicaFondo.play();
+                // Ocultar mute, mostrar icono de sonido
+                svgSonido.style.display = 'block';
+                svgMute.style.display = 'none';
+                reproduciendo = true;
+            }
         });
     }
 });

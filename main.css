@@ -70,20 +70,32 @@ body {
 
 /* Tipografía elegante para invitación */
 .contenido-inicio h1 {
-    font-family: 'Playfair Display', serif;
-    color: #96756f; /* Tono más oscuro de la paleta para contraste */
-    font-size: 1.5rem;
-    letter-spacing: 3px;
+    font-family: 'Lato', sans-serif; /* Cambiado a una fuente más limpia */
+    color: #96756f;
+    font-size: 1.1rem;
+    letter-spacing: 5px; /* Más espaciado para elegancia */
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    font-weight: 400;
 }
 
 .contenido-inicio h2 {
     font-family: 'Great Vibes', cursive;
-    color: #c8a59e; /* Tono medio de la paleta */
-    font-size: 4.5rem;
+    color: #c8a59e;
+    font-size: 5.5rem; /* Ligeramente más grande */
     font-weight: normal;
-    margin: 10px 0 30px 0;
+    margin: 5px 0 35px 0;
+    line-height: 1;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05); /* Sombra sutil para profundidad */
+}
+
+.btn-small {
+    font-size: 14px !important;
+    line-height: normal !important; /* Remueve la altura de línea fija */
+    padding: 8px 16px !important; /* Ajusta el padding para centrar contenido */
+    min-width: auto !important;
+    margin-top: 0 !important; /* Quita el margen superior para alinear con el texto */
+    height: fit-content;
 }
 
 /* Botón estilizado */
@@ -98,6 +110,32 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     letter-spacing: 1px;
+}
+
+.btn-musica-flotante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ddbcb5;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    z-index: 10000;
+    display: none; /* Se mantiene oculto hasta que se abre la invitación */
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, background-color 0.3s;
+    outline: none;
+}
+
+.btn-musica-flotante:hover {
+    transform: scale(1.1);
+    background-color: #c8a59e;
 }
 
 #btn-abrir:hover {
@@ -230,7 +268,6 @@ body {
 
 /* Textos de la cabecera de la tarjeta */
 .texto-pequeno-rosa {
-    font-family: 'Lato', sans-serif;
     color: #c8a59e;
     font-size: 1.2rem;
     margin-top: 20px;
